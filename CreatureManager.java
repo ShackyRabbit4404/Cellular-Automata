@@ -29,9 +29,10 @@ public class CreatureManager{
                             }
                         }
                         //the only other option is to hit the same species
-                        else{
+                        else if(creatures.get(x+xc).get(y+yc).getSpecies().equals(creatures.get(x).get(y).getSpecies())){
                             //if(Math.random() < creatures.get(x).get(y).getSpawnChance())
                             spawn(creatures.get(x).get(y),x,y);
+                            System.out.println("Spawned creature");
                         }
                     }
                 }
@@ -41,9 +42,8 @@ public class CreatureManager{
     public void spawn(Creature c, int x, int y){
         for(int xc = -1; xc < 2; xc++){
             for(int yc = -1; yc < 2; yc++){
-                if((x+xc < 0 || y+yc < 0 || x+xc >= creatures.size() || y+yc >= creatures.get(0).size()) && (xc == 0 && yc == 0) && creatures.get(x+xc).get(y+yc) == null){
+                if(!(x+xc < 0 || y+yc < 0 || x+xc >= creatures.size() || y+yc >= creatures.get(0).size()) && (xc == 0 && yc == 0) && creatures.get(x+xc).get(y+yc) == null){
                     creatures.get(x+xc).set(y+yc,c.clone());
-                    System.out.println("Spawned creature");
                     break;
                 }
             }
