@@ -35,8 +35,8 @@ public class Display extends JComponent{
                 }
             }
         }
-        g.setColor(Color.BLACK);
         for(int a = 0; a < creatureTypes.size(); a++){
+            g.setColor(creatureTypes.get(a).getColor());
             g.drawString(creatureTypes.get(a).getSpecies()+": "+numOfEachType[a],width*scale+10,30+a*15);
         }
     }

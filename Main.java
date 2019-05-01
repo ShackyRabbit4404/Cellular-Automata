@@ -11,13 +11,13 @@ public class Main{
         double maxStartStrength = 10;
         double maxStartResistance = 0.3;
         for(int a = 0; a < numSpeciesType; a++){
-            creatureList.add(new Creature("Species "+(a+1),Math.random()*maxStartStrength,Math.random()*maxStartResistance,new int[]{(int)(Math.random()*255)+1,(int)(Math.random()*255)+1,(int)(Math.random()*255)+1}));
+            creatureList.add(new Creature("Species "+(a+1),Math.random()*maxStartStrength,Math.random()*maxStartResistance,new int[]{(int)(Math.random()*255)+1,(int)(Math.random()*255)+1,(int)(Math.random()*255)+1},Math.random()));
         }
         
-        int WIDTH = 100;
-        int HEIGHT = 100;
+        int WIDTH = 50;
+        int HEIGHT = 50;
         int SCALE = 10;
-        double creatureChance = 0.1;
+        double creatureChance = 0.3;
         
         System.out.println("started creating board");
         for(int x = 0; x < WIDTH; x++){
@@ -44,7 +44,7 @@ public class Main{
         while(true){
             screen.draw();
             try{
-                Thread.sleep(500);
+                Thread.sleep(100);
             }
             catch(Exception e){
                 System.out.println(e);
