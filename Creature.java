@@ -11,7 +11,7 @@ public class Creature{
         strength = st;
         resistance = r;
         age = 0;
-        health = 100;
+        health = 10;
         color = c;
     }
     public String getSpecies(){
@@ -19,6 +19,15 @@ public class Creature{
     }
     public double getHealth(){
         return health;
+    }
+    public void setMaxHealth(){
+        health = 10;
+    }
+    public boolean takeDamage(double d){
+        health -= d*(1-resistance);
+        if(health <= 0)
+            return true;
+        return false;
     }
     public double getStrength(){
         return strength;

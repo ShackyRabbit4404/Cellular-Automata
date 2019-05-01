@@ -14,10 +14,10 @@ public class Main{
             creatureList.add(new Creature("Species "+(a+1),Math.random()*maxStartStrength,Math.random()*maxStartResistance,new int[]{(int)(Math.random()*255)+1,(int)(Math.random()*255)+1,(int)(Math.random()*255)+1}));
         }
         
-        int WIDTH = 50;
-        int HEIGHT = 50;
+        int WIDTH = 100;
+        int HEIGHT = 100;
         int SCALE = 10;
-        double creatureChance = 0.4;
+        double creatureChance = 0.1;
         
         System.out.println("started creating board");
         for(int x = 0; x < WIDTH; x++){
@@ -35,7 +35,7 @@ public class Main{
         }
         System.out.println("finished creating board: "+board.size()+","+board.get(0).size());
         
-        CreatureManager creatureManager = new CreatureManager(board);
+        CreatureManager creatureManager = new CreatureManager(board,creatureList,creatureCount);
         Display screen = new Display(board,WIDTH,HEIGHT,SCALE,creatureList,creatureCount);
         frame.add(screen);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
