@@ -6,19 +6,19 @@ public class Main{
         JFrame frame = new JFrame("Screen");
         ArrayList<ArrayList<Creature>> board = new ArrayList<ArrayList<Creature>>();
         ArrayList<Creature> creatureList = new ArrayList<Creature>();
-        int numSpeciesType = 10;
+        int numSpeciesType = 30;
         int[] creatureCount = new int[numSpeciesType];
         double maxStartStrength = 5;
         double maxStartResistance = .2;
-        double hightestOldAgeDeathChance = 0.03;
-        double maxSpawnRate = 0.05;
+        double hightestOldAgeDeathChance = 0.005;
+        double maxSpawnRate = 0.005;
         double chanceOfMutation = 0.01;
         for(int a = 0; a < numSpeciesType; a++){
             creatureList.add(new Creature("Species "+(a+1),Math.random()*maxStartStrength,Math.random()*maxStartResistance,new int[]{(int)(Math.random()*255)+1,(int)(Math.random()*255)+1,(int)(Math.random()*255)+1},Math.random()*maxSpawnRate,Math.random()*hightestOldAgeDeathChance));
         }
         
-        int WIDTH = 50;
-        int HEIGHT = 50;
+        int WIDTH = 200;
+        int HEIGHT = 100;
         int SCALE = 10;
         double creatureChance = 0.3;
         

@@ -15,6 +15,14 @@ public class CreatureManager{
         for(int x = 0; x < creatures.size(); x++){
             for(int y = 0; y < creatures.get(x).size(); y++){
                 if(creatures.get(x).get(y) != null){
+                    if(Math.random() < creatures.get(x).get(y).getSpawnChance()){
+                        /*
+                        if(mutationChance < Math.random())
+                            spawn(mutate(creatures.get(x).get(y)),x,y);
+                        else
+                        */
+                            spawn(creatures.get(x).get(y),x,y);
+                    }
                     if(Math.random() < creatures.get(x).get(y).getAgeChance()){
                         numOfEachType[getIndexOfSpeciesType(creatures.get(x).get(y).getSpecies())] --;
                         creatures.get(x).set(y,null);
@@ -37,10 +45,7 @@ public class CreatureManager{
                                 }
                             }
                             //the only other option is to hit the same species
-                            else if(creatures.get(x+xc).get(y+yc).getSpecies().equals(creatures.get(x).get(y).getSpecies())){
-                                if(Math.random() < creatures.get(x).get(y).getSpawnChance())
-                                    spawn(creatures.get(x).get(y),x,y);
-                            }
+                            
                         }
                     }
                 }
@@ -60,6 +65,7 @@ public class CreatureManager{
     }
     public Creature mutate(Creature c){
         Creature ret = new Creature("Species: "+(creatureTypes.size()+1),((Math.random()-maxVariation)+1)*c.getStrength(),((Math.random()-maxVariation)+1)*c.getResistance(),new int[]{(int)(Math.random()*255)+1,(int)(Math.random()*255)+1,(int)(Math.random()*255)+1},((Math.random()-maxVariation)+1)*c.getSpawnChance(),((Math.random()-maxVariation)+1)*c.getAgeChance());
+        /*
         creatureTypes.add(ret);
         int[] numOfEachTypeTemp = new int[creatureTypes.size()+1];
         for(int a = 0; a < numOfEachType.length; a++){
@@ -67,6 +73,7 @@ public class CreatureManager{
         }
         numOfEachTypeTemp[numOfEachTypeTemp.length-1] = 1;
         numOfEachType = numOfEachTypeTemp;
+        */
         return ret;
     }
     public int getIndexOfSpeciesType(String species){
