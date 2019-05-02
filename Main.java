@@ -10,8 +10,8 @@ public class Main{
         int[] creatureCount = new int[numSpeciesType];
         double maxStartStrength = 5;
         double maxStartResistance = .2;
-        double hightestOldAgeDeathChance = 0.1;
-        double maxSpawnRate = 0.1;
+        double hightestOldAgeDeathChance = 0.03;
+        double maxSpawnRate = 0.05;
         double chanceOfMutation = 0.01;
         for(int a = 0; a < numSpeciesType; a++){
             creatureList.add(new Creature("Species "+(a+1),Math.random()*maxStartStrength,Math.random()*maxStartResistance,new int[]{(int)(Math.random()*255)+1,(int)(Math.random()*255)+1,(int)(Math.random()*255)+1},Math.random()*maxSpawnRate,Math.random()*hightestOldAgeDeathChance));
