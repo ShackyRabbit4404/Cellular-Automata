@@ -8,10 +8,13 @@ public class Main{
         ArrayList<Creature> creatureList = new ArrayList<Creature>();
         int numSpeciesType = 10;
         int[] creatureCount = new int[numSpeciesType];
-        double maxStartStrength = 10;
-        double maxStartResistance = 0.3;
+        double maxStartStrength = 5;
+        double maxStartResistance = .2;
+        double hightestOldAgeDeathChance = 0.1;
+        double maxSpawnRate = 0.1;
+        double chanceOfMutation = 0.01;
         for(int a = 0; a < numSpeciesType; a++){
-            creatureList.add(new Creature("Species "+(a+1),Math.random()*maxStartStrength,Math.random()*maxStartResistance,new int[]{(int)(Math.random()*255)+1,(int)(Math.random()*255)+1,(int)(Math.random()*255)+1},Math.random()));
+            creatureList.add(new Creature("Species "+(a+1),Math.random()*maxStartStrength,Math.random()*maxStartResistance,new int[]{(int)(Math.random()*255)+1,(int)(Math.random()*255)+1,(int)(Math.random()*255)+1},Math.random()*maxSpawnRate,Math.random()*hightestOldAgeDeathChance));
         }
         
         int WIDTH = 50;
@@ -35,7 +38,7 @@ public class Main{
         }
         System.out.println("finished creating board: "+board.size()+","+board.get(0).size());
         
-        CreatureManager creatureManager = new CreatureManager(board,creatureList,creatureCount);
+        CreatureManager creatureManager = new CreatureManager(board,creatureList,creatureCount,chanceOfMutation);
         Display screen = new Display(board,WIDTH,HEIGHT,SCALE,creatureList,creatureCount);
         frame.add(screen);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

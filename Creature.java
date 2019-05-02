@@ -7,7 +7,8 @@ public class Creature{
     private double resistance;
     private int[] color;
     private double spawnChance;
-    public Creature(String s, double st,double r,int[] c,double sc){
+    private double ageChance;
+    public Creature(String s, double st,double r,int[] c,double sc,double ac){
         species = s;
         strength = st;
         resistance = r;
@@ -15,6 +16,10 @@ public class Creature{
         health = 10;
         color = c;
         spawnChance = sc;
+        ageChance = ac;
+    }
+    public double getAgeChance(){
+        return ageChance;
     }
     public String getSpecies(){
         return species;
@@ -27,6 +32,9 @@ public class Creature{
     }
     public double getSpawnChance(){
         return spawnChance;
+    }
+    public double getResistance(){
+        return resistance;
     }
     public boolean takeDamage(double d){
         health -= d*(1-resistance);
@@ -41,6 +49,6 @@ public class Creature{
         return new Color(color[0],color[1],color[2]);
     }
     public Creature clone(){
-        return new Creature(species,strength,resistance,color,spawnChance);
+        return new Creature(species,strength,resistance,color,spawnChance,ageChance);
     }
 }
