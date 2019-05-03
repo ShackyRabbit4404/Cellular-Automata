@@ -40,4 +40,7 @@ public class Display extends JComponent{
             g.drawString(creatureTypes.get(a).getSpecies()+": "+numOfEachType[a],width*scale+10,30+a*15);
         }
     }
+    public void setCreatureCount(int[] cc){
+        numOfEachType = cc;
+    }
 }
