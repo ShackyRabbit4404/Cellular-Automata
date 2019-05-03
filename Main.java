@@ -6,7 +6,7 @@ public class Main{
         JFrame frame = new JFrame("Screen");
         ArrayList<ArrayList<Creature>> board = new ArrayList<ArrayList<Creature>>();
         ArrayList<Creature> creatureList = new ArrayList<Creature>();
-        int numSpeciesType = 30;
+        int numSpeciesType = 5;
         int[] creatureCount = new int[numSpeciesType];
         double maxStartStrength = 5;
         double maxStartResistance = .2;

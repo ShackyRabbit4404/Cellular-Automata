@@ -4,7 +4,7 @@ public class CreatureManager{
     private ArrayList<Creature> creatureTypes;
     private int[] numOfEachType;
     private double mutationChance;
-    private double maxVariation = .2;
+    private double maxVariation = .5;
     private Display screen;
     public CreatureManager(ArrayList<ArrayList<Creature>> c,ArrayList<Creature> ct, int[] noet,double mc,Display s){
         creatures = c;
@@ -17,11 +17,15 @@ public class CreatureManager{
         for(int x = 0; x < creatures.size(); x++){
             for(int y = 0; y < creatures.get(x).size(); y++){
                 if(creatures.get(x).get(y) != null){
-                    if(Math.random() < creatures.get(x).get(y).getSpawnChance()){
+                    
+                    if(Math.random() < creatures.get(x).get(y).getSpawnChance()*creatures.get(x).get(y).spawnRateBoost){
                         if(mutationChance > Math.random())
                             spawn(mutate(creatures.get(x).get(y)),x,y);
                         else
                             spawn(creatures.get(x).get(y),x,y);
+                    }
+                    if(creatures.get(x).get(y).spawnRateBoost > 1){
+                        creatures.get(x).get(y).spawnRateBoost -= 0.05;
                     }
                     if(Math.random() < creatures.get(x).get(y).getAgeChance()){
                         numOfEachType[getIndexOfSpeciesType(creatures.get(x).get(y).getSpecies())] --;
@@ -86,7 +90,8 @@ public class CreatureManager{
         }
     }
     public Creature mutate(Creature c){
-        Creature ret = new Creature("Species: "+(creatureTypes.size()+1),((Math.random()*1.5-maxVariation)+1)*c.getStrength(),((Math.random()*1.5-maxVariation)+1)*c.getResistance(),new int[]{(int)(Math.random()*255)+1,(int)(Math.random()*255)+1,(int)(Math.random()*255)+1},((Math.random()*1.5-maxVariation)+1)*c.getSpawnChance(),((Math.random()*1.5-maxVariation)+1)*c.getAgeChance());
+        Creature ret = new Creature("Species: "+(creatureTypes.size()+1),((Math.random()*1.8-maxVariation)+1)*c.getStrength(),((Math.random()*1.8-maxVariation)+1)*c.getResistance(),new int[]{(int)(Math.random()*255)+1,(int)(Math.random()*255)+1,(int)(Math.random()*255)+1},c.getSpawnChance(),((Math.random()*0.9-maxVariation)+1)*c.getAgeChance());
+        ret.spawnRateBoost = 10;
         creatureTypes.add(ret);
         int[] numOfEachTypeTemp = new int[creatureTypes.size()];
         for(int a = 0; a < numOfEachType.length; a++){

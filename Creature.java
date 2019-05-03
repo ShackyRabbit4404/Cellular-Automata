@@ -8,6 +8,7 @@ public class Creature{
     private int[] color;
     private double spawnChance;
     private double ageChance;
+    double spawnRateBoost;
     public Creature(String s, double st,double r,int[] c,double sc,double ac){
         species = s;
         strength = st;
@@ -17,6 +18,7 @@ public class Creature{
         color = c;
         spawnChance = sc;
         ageChance = ac;
+        spawnRateBoost = 1;
     }
     public double getAgeChance(){
         return ageChance;
