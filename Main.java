@@ -3,10 +3,10 @@ import java.awt.*;
 import java.util.*;
 public class Main{
     public static void main(String[] args){
-        JFrame frame = new JFrame("Screen");
+        JFrame frame = new JFrame("Cellular Automata");
         ArrayList<ArrayList<Creature>> board = new ArrayList<ArrayList<Creature>>();
         ArrayList<Creature> creatureList = new ArrayList<Creature>();
-        int numSpeciesType = 5;
+        int numSpeciesType = 40;
         int[] creatureCount = new int[numSpeciesType];
         double maxStartStrength = 5;
         double maxStartResistance = .2;
@@ -47,7 +47,7 @@ public class Main{
         while(true){
             screen.draw();
             try{
-                Thread.sleep(100);
+                Thread.sleep(50);
             }
             catch(Exception e){
                 System.out.println(e);

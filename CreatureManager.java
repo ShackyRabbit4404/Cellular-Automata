@@ -4,7 +4,7 @@ public class CreatureManager{
     private ArrayList<Creature> creatureTypes;
     private int[] numOfEachType;
     private double mutationChance;
-    private double maxVariation = .5;
+    private double maxVariation = .6;
     private Display screen;
     public CreatureManager(ArrayList<ArrayList<Creature>> c,ArrayList<Creature> ct, int[] noet,double mc,Display s){
         creatures = c;
@@ -90,7 +90,7 @@ public class CreatureManager{
         }
     }
     public Creature mutate(Creature c){
-        Creature ret = new Creature("Species: "+(creatureTypes.size()+1),((Math.random()*1.8-maxVariation)+1)*c.getStrength(),((Math.random()*1.8-maxVariation)+1)*c.getResistance(),new int[]{(int)(Math.random()*255)+1,(int)(Math.random()*255)+1,(int)(Math.random()*255)+1},c.getSpawnChance(),((Math.random()*0.9-maxVariation)+1)*c.getAgeChance());
+        Creature ret = new Creature("Species: "+(creatureTypes.size()+1),((Math.random()*1.8-maxVariation)+1)*c.getStrength(),((Math.random()*1.8-maxVariation)+1)*c.getResistance(),new int[]{(int)(Math.random()*255)+1,(int)(Math.random()*255)+1,(int)(Math.random()*255)+1},((Math.random()*0.9-maxVariation)+1)*c.getSpawnChance(),((Math.random()*0.9-maxVariation)+1)*c.getAgeChance());
         ret.spawnRateBoost = 10;
         creatureTypes.add(ret);
         int[] numOfEachTypeTemp = new int[creatureTypes.size()];
